@@ -1,8 +1,8 @@
 use std::collections::HashSet;
 
-struct LatticePonts;
+struct Solution;
 
-impl LatticePonts {
+impl Solution {
     fn is_point_lattice((p_x, p_y): &(i32, i32), (x, y, rad): &(i32, i32, i32)) -> bool {
         let dx = p_x - x;
         let dy = p_y - y;
@@ -35,18 +35,18 @@ impl LatticePonts {
 
 fn main() {
     let circle = vec![vec![1,1,1]];
-    let result = LatticePonts::count(circle);
+    let result = Solution::count(circle);
     println!("Circle [1,1,1] has {} lattice points", result);
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::LatticePonts;
+    use crate::Solution;
 
     #[test]
     fn one_cirle() {
         let circle: Vec<Vec<i32>> = vec![vec![2, 2, 1]];
-        let result = LatticePonts::count(circle);
+        let result = Solution::count(circle);
         assert_eq!(result, 5);
     }
 }
