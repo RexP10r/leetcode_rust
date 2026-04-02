@@ -6,21 +6,19 @@ pub struct FenwickSumTree {
 impl FenwickSumTree {
     pub fn new(n: usize) -> Self {
         Self {
-            tree: vec![0; n],
+            tree: vec![0; n+1],
             size: n as usize
         }
     }
     
     pub fn add(&mut self, mut i: usize, delta: i32) {
-        i += 1;
         while i <= self.size {
             self.tree[i] += delta;
             i += i & i.wrapping_neg();
         }
     }
 
-    pub fn sum(&mut self, mut i: usize) -> i32 {
-        i += 1; 
+    pub fn sum(&self, mut i: usize) -> i32 {
         let mut result = 0;
         while i > 0 {
             result += self.tree[i];
