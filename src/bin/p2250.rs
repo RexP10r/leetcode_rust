@@ -4,12 +4,11 @@ pub struct Solution;
 
 impl Solution {
     pub fn count_rectangles(rectangles: Vec<Vec<i32>>, points: Vec<Vec<i32>>) -> Vec<i32> {
-        let mut rects: Vec<(i32, i32)> = rectangles.into_iter()
-            .map(|r| (r[0], r[1]))
-            .collect();
+        let mut rects: Vec<(i32, i32)> = rectangles.into_iter().map(|r| (r[0], r[1])).collect();
         rects.sort_unstable_by_key(|r| std::cmp::Reverse(r.0));
 
-        let mut pts: Vec<(i32, i32, usize)> = points.into_iter()
+        let mut pts: Vec<(i32, i32, usize)> = points
+            .into_iter()
             .enumerate()
             .map(|(i, p)| (p[0], p[1], i))
             .collect();
@@ -26,8 +25,7 @@ impl Solution {
             }
             ans[orig_idx] = bit.range_sum(y as usize - 1, 100);
         }
-
-        ans 
+        ans
     }
 }
 fn main() {

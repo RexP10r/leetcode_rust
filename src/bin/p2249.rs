@@ -34,7 +34,7 @@ impl Solution {
 }
 
 fn main() {
-    let circle = vec![vec![1,1,1]];
+    let circle = vec![vec![1, 1, 1]];
     let result = Solution::count(circle);
     println!("Circle [1,1,1] has {} lattice points", result);
 }
