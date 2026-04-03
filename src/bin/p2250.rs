@@ -1,4 +1,4 @@
-use leetcode_rust::ds::fenwick_tree::FenwickSumTree;
+use leetcode_rust::ds::{fenwick_tree::FenwickSumTree, traits::IndexTree};
 
 pub struct Solution;
 
@@ -23,7 +23,7 @@ impl Solution {
                 bit.add(rects[r_idx].1 as usize, 1);
                 r_idx += 1;
             }
-            ans[orig_idx] = bit.range_sum(y as usize, 100);
+            ans[orig_idx] = bit.range_query(y as usize, 100);
         }
         ans
     }
