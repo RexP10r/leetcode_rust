@@ -1,18 +1,16 @@
 pub struct FenwickSumTree {
     tree: Vec<i32>,
-    size: usize,
 }
 
 impl FenwickSumTree {
     pub fn new(n: usize) -> Self {
         Self {
             tree: vec![0; n + 1],
-            size: n as usize,
         }
     }
 
     pub fn add(&mut self, mut i: usize, delta: i32) {
-        while i <= self.size {
+        while i < self.tree.len() {
             self.tree[i] += delta;
             i += i & i.wrapping_neg();
         }
@@ -27,11 +25,11 @@ impl FenwickSumTree {
         result
     }
 
-    pub fn range_sum(&mut self, left: usize, right: usize) -> i32 {
+    pub fn range_sum(&self, left: usize, right: usize) -> i32 {
         if left == 0 {
             return self.sum(right);
         }
-        self.sum(right) - self.sum(left)
+        self.sum(right) - self.sum(left-1)
     }
 }
 
