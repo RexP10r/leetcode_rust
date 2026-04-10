@@ -42,6 +42,6 @@ where
     }
 
     fn range_query(&self, left_idx: usize, right_idx: usize) -> T {
-        self.prefix_query(right_idx) - self.prefix_query(left_idx -1)
+        self.prefix_query(right_idx) - self.prefix_query(left_idx - 1)
     }
 }
