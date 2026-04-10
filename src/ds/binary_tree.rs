@@ -80,7 +80,7 @@ impl<T: Ord> BinarySearchTree for SimpleBST<T> {
                 *node = Some(n);
             }
         }
-        fn remove_node<T: Ord>(node: &mut Option<Box<Node<T>>>) {
+        fn remove_curr_value<T: Ord>(node: &mut Option<Box<Node<T>>>) {
             let mut n = node.take().unwrap();
             let left = n.left.take();
             let right = n.right.take();
@@ -97,7 +97,7 @@ impl<T: Ord> BinarySearchTree for SimpleBST<T> {
                 Some(n) if value < &n.value => remove_rec(&mut n.left, value),
                 Some(n) if value > &n.value => remove_rec(&mut n.right, value),
                 Some(_) => {
-                    remove_node(node);
+                    remove_curr_value(node);
                     true
                 }
                 None => false,
