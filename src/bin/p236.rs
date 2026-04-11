@@ -14,9 +14,13 @@ impl TreeNode {
         }
     }
 }
-use std::cell::{Ref, RefCell};
+use std::cell::RefCell;
 use std::rc::Rc;
+
+fn main() {}
+
 struct Solution;
+
 impl Solution {
     pub fn lowest_common_ancestor(
         root: Option<Rc<RefCell<TreeNode>>>,
@@ -41,4 +45,3 @@ impl Solution {
         left.or(right)
     }
 }
-fn main() {}
