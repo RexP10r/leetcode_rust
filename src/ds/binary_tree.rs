@@ -9,7 +9,7 @@ pub struct SimpleBST<T> {
     root: Option<Box<Node<T>>>,
 }
 impl<T: Ord> SimpleBST<T> {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { root: None }
     }
 }
