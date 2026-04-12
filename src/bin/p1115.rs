@@ -23,7 +23,6 @@ impl FooBar {
             }
             *is_my_turn = !func_turn;
             cvar.notify_one();
-            drop(is_my_turn);
             func();
         }
     }
