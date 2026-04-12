@@ -49,7 +49,44 @@ impl FooBar {
     }
 }
 fn main() {
-    let tmp = FooBar::new(10);
-    tmp.foo(print_foo);
-    tmp.bar(print_bar);
+    let fb = FooBar::new(1);
+    fb.foo(print_foo);
+    fb.bar(print_bar);
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::{Arc, Mutex};
+    use std::thread;
+
+    #[test]
+    fn test_alternating_output() {
+        let n = 5;
+        let foobar = Arc::new(FooBar::new(n));
+        let results = Arc::new(Mutex::new(Vec::new()));
+
+        let res_foo = Arc::clone(&results);
+        let res_bar = Arc::clone(&results);
+        let fb_foo = Arc::clone(&foobar);
+        let fb_bar = Arc::clone(&foobar);
+
+        let t1 = thread::spawn(move || {
+            fb_foo.foo(move || {
+                res_foo.lock().unwrap().push("foo");
+            });
+        });
+
+        let t2 = thread::spawn(move || {
+            fb_bar.bar(move || {
+                res_bar.lock().unwrap().push("bar");
+            });
+        });
+
+        t1.join().unwrap();
+        t2.join().unwrap();
+
+        let actual = results.lock().unwrap();
+        let expected: Vec<&str> = (0..n).flat_map(|_| vec!["foo", "bar"]).collect();
+        assert_eq!(*actual, expected);
+    }
 }
