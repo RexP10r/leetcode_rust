@@ -15,10 +15,10 @@ pub trait IndexTree {
 pub trait BinarySearchTree {
     type Item: Ord;
 
-    fn len(&self) -> usize;
+    fn volume(&self) -> usize;
 
     fn is_empty(&self) -> bool {
-        self.len() == 0
+        self.volume() == 0
     }
 
     fn insert(&mut self, value: Self::Item);

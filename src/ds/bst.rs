@@ -15,7 +15,7 @@ impl<T: Ord> SimpleBST<T> {
 }
 impl<T: Ord> BinarySearchTree for SimpleBST<T> {
     type Item = T;
-    fn len(&self) -> usize {
+    fn volume(&self) -> usize {
         fn count_rec<T>(node: &Option<Box<Node<T>>>) -> usize {
             match node {
                 Some(n) => 1 + count_rec(&n.left) + count_rec(&n.right),
@@ -25,7 +25,7 @@ impl<T: Ord> BinarySearchTree for SimpleBST<T> {
         count_rec(&self.root)
     }
     fn is_empty(&self) -> bool {
-        self.len() == 0
+        self.volume() == 0
     }
     fn insert(&mut self, value: Self::Item) {
         fn insert_rec<T: Ord>(node: &mut Option<Box<Node<T>>>, value: T) {
