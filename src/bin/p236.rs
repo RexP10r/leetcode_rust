@@ -5,7 +5,6 @@ pub struct TreeNode {
     pub right: Option<Rc<RefCell<TreeNode>>>,
 }
 impl TreeNode {
-    #[inline]
     pub fn new(val: i32) -> Self {
         TreeNode {
             val,
@@ -16,8 +15,6 @@ impl TreeNode {
 }
 use std::cell::RefCell;
 use std::rc::Rc;
-
-fn main() {}
 
 struct Solution;
 
@@ -44,4 +41,8 @@ impl Solution {
         };
         left.or(right)
     }
+}
+
+fn main() {
+    let _tmp = Solution::lowest_common_ancestor(None, None, None);
 }

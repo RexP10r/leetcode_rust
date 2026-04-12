@@ -15,9 +15,8 @@ impl TreeNode {
 use std::cell::RefCell;
 use std::rc::Rc;
 
-fn main() {}
-
 struct Solution;
+
 impl TreeNode {
     pub fn inorder(&self) -> Vec<i32> {
         let mut result: Vec<i32> = Vec::new();
@@ -54,4 +53,8 @@ impl Solution {
         }
         TreeNode::constract_balaced(sorted_vec.as_slice())
     }
+}
+
+fn main() {
+    let _tmp = Solution::balance_bst(None);
 }
