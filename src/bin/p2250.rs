@@ -1,6 +1,6 @@
 use leetcode_rust::ds::{fenwick_tree::FenwickSumTree, traits::IndexTree};
 
-pub struct Solution;
+struct Solution;
 
 impl Solution {
     pub fn count_rectangles(rectangles: Vec<Vec<i32>>, points: Vec<Vec<i32>>) -> Vec<i32> {
