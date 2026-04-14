@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 
-pub struct DiningPhilosophers {
+struct DiningPhilosophers {
     forks: Arc<Vec<Mutex<()>>>,
 }
 
@@ -49,4 +49,8 @@ impl DiningPhilosophers {
     }
 }
 
-fn main() {}
+fn main() {
+    fn temp_func() {}
+    let temp = DiningPhilosophers::new();
+    temp.wants_to_eat(0, temp_func, temp_func, temp_func, temp_func, temp_func);
+}
